@@ -148,7 +148,7 @@ class Chef
             username: new_resource.connection[:username],
             password: new_resource.connection[:password],
             port: new_resource.connection[:port],
-            database: new_resource.database_name
+            database: new_resource.connection.fetch(:database, new_resource.database_name)
           )
         end
 
