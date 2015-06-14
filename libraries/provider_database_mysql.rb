@@ -92,6 +92,9 @@ class Chef
             query_sql = new_resource.sql_query
             Chef::Log.debug("Performing query [#{query_sql}]")
             query_client.query(query_sql)
+            while query_client.next_result                                                      
+              query_client.store_result                                                         
+            end
           ensure
             close_query_client
           end
